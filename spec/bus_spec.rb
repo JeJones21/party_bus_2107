@@ -70,10 +70,29 @@ describe Bus do
       bus.add_passenger('Alice')
 
       expect(bus.number_of_passengers).to eq(5)
-
       expect(bus.over_capacity?).to eq(true)
+
     end
 
-    
+    it "can kick passengers out" do
+      bus = Bus.new('Mikes Awesome Bus', 4)
+      bus.add_passenger('Mike')
+      bus.add_passenger('Megan')
+      bus.add_passenger('Tim')
+      bus.add_passenger('James')
+      bus.add_passenger('Cat')
+      bus.add_passenger('Alice')
 
-end
+      bus.kick_out
+
+      expect(bus.number_of_passengers).to eq(5)
+      expect(bus.over_capacity?).to eq(true)
+
+      bus.kick_out
+      bus.kick_out
+
+      expect(bus.number_of_passengers).to eq(3)
+      expect(bus.over_capacity?).to eq(false)
+      expect(bus.passengers).to eq(["James", "Cat", "Alice"])
+    end
+  end
