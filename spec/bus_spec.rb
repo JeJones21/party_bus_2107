@@ -66,5 +66,14 @@ describe Bus do
 
       expect(bus.over_capacity?).to eq(false)
 
+      bus.add_passenger('Eve')
+      bus.add_passenger('Alice')
+
+      expect(bus.number_of_passengers).to eq(5)
+
+      expect(bus.over_capacity?).to eq(true)
     end
+
+    
+
 end
