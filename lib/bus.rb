@@ -27,10 +27,11 @@ class Bus
     if @passengers.length <= 4
       false
     else
-      true 
+      true
     end
   end
 
-
-
+  def kick_out
+    @passengers.shift
+  end
 end
